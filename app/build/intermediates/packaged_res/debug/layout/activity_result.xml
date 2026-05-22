@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- ── TOP NAV ── -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/orange"
+            android:padding="14dp"
+            android:gravity="center_vertical"
+            android:elevation="4dp">
+
+            <Button
+                android:id="@+id/btnBack"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="←"
+                android:background="@drawable/btn_nav_bg"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:layout_marginEnd="12dp"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="🎯 Hasil Belajar"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="💾 Simpan"
+                android:background="@drawable/btn_nav_bg"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- ── WORD RESULT CARD ── -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/WiSeeCard">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="24dp">
+
+                    <TextView
+                        android:id="@+id/tvEmoji"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🐱"
+                        android:textSize="64sp"
+                        android:layout_marginBottom="8dp" />
+
+                    <TextView
+                        android:id="@+id/tvWord"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="KUCING"
+                        android:textColor="@color/orange"
+                        android:textSize="42sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="8dp" />
+
+                    <TextView
+                        android:id="@+id/tvCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="📁 HEWAN"
+                        android:textColor="@color/blue"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:background="@drawable/cat_badge_bg"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:paddingTop="6dp"
+                        android:paddingBottom="6dp" />
+
+                    <!-- Speak button -->
+                    <Button
+                        android:id="@+id/btnSpeak"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="🔊  Putar Suara"
+                        android:backgroundTint="@color/yellow"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:textSize="15sp"
+                        style="@style/WiSeeButton.Primary"
+                        android:layout_marginTop="16dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ── DESCRIPTION CARD ── -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/WiSeeCard">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="📖 Deskripsi"
+                        android:textColor="@color/orange"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="10dp" />
+
+                    <TextView
+                        android:id="@+id/tvDesc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="@color/text_primary"
+                        android:textSize="15sp"
+                        android:lineSpacingExtra="5dp"
+                        android:background="@drawable/desc_box_bg"
+                        android:padding="14dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ── NEGATIVE WORD WARNING ── -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardNegative"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/WiSeeCard"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/warning_box_bg"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="💝 Pesan untuk Kamu"
+                        android:textColor="@color/warning"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="8dp" />
+
+                    <TextView
+                        android:id="@+id/tvNegativeMsg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="@color/text_primary"
+                        android:textSize="14sp"
+                        android:lineSpacingExtra="4dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ── AI ILLUSTRATION CARD ── -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/WiSeeCard">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="12dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="🎨 Ilustrasi AI"
+                            android:textColor="@color/orange"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <Button
+                            android:id="@+id/btnRegenerate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="32dp"
+                            android:text="🔄 Buat Ulang"
+                            android:textSize="11sp"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            style="@style/WiSeeButton.Outline" />
+                    </LinearLayout>
+
+                    <!-- Status / Loading -->
+                    <ProgressBar
+                        android:id="@+id/pbImage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:indeterminateTint="@color/orange"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/tvImageStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="8dp" />
+
+                    <!-- Illustration Image -->
+                    <ImageView
+                        android:id="@+id/ivIllustration"
+                        android:layout_width="match_parent"
+                        android:layout_height="280dp"
+                        android:scaleType="fitCenter"
+                        android:background="@drawable/canvas_bg"
+                        android:padding="8dp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="💡 Ilustrasi dibuat oleh AI (HuggingFace FLUX).\nPerlu koneksi internet dan HF_TOKEN."
+                        android:textColor="@color/text_light"
+                        android:textSize="11sp"
+                        android:gravity="center"
+                        android:layout_marginTop="8dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Bottom padding -->
+            <View android:layout_width="match_parent" android:layout_height="20dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

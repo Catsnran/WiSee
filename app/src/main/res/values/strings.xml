@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WiSee</string>
+    <string name="app_tagline">Fun Learning for Kids ✨</string>
+    <string name="login_title">Masuk ke WiSee</string>
+    <string name="register_title">Daftar ke WiSee</string>
+    <string name="username_hint">Username</string>
+    <string name="password_hint">Password</string>
+    <string name="login_btn">🚀 Masuk Sekarang!</string>
+    <string name="register_btn">🌟 Daftar Sekarang!</string>
+    <string name="no_account">Belum punya akun?</string>
+    <string name="have_account">Sudah punya akun?</string>
+    <string name="go_register">Daftar di sini →</string>
+    <string name="go_login">Masuk di sini →</string>
+    <string name="clear">🗑️ Hapus</string>
+    <string name="recognize">🔍 Kenali Tulisan!</string>
+    <string name="speak">🔊 Putar Suara</string>
+    <string name="save">💾 Simpan</string>
+    <string name="history">📜 Riwayat</string>
+    <string name="vocab">📖 Kosakata</string>
+    <string name="logout">🚪 Keluar</string>
+</resources>

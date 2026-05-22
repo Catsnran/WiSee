@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg">
+
+    <!-- ── TOP NAV ── -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/orange"
+        android:padding="14dp"
+        android:gravity="center_vertical"
+        android:elevation="4dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="✨ WiSee"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvGreeting"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Halo! 👋"
+            android:textColor="#FFE0BC"
+            android:textSize="13sp"
+            android:gravity="center" />
+
+        <Button android:id="@+id/btnHistory"
+            android:layout_width="wrap_content" android:layout_height="36dp"
+            android:text="📜" android:textSize="16sp"
+            android:background="@drawable/btn_nav_bg"
+            android:textColor="@color/white"
+            android:layout_marginStart="4dp" android:paddingStart="10dp" android:paddingEnd="10dp" />
+
+        <Button android:id="@+id/btnVocab"
+            android:layout_width="wrap_content" android:layout_height="36dp"
+            android:text="📖" android:textSize="16sp"
+            android:background="@drawable/btn_nav_bg"
+            android:textColor="@color/white"
+            android:layout_marginStart="4dp" android:paddingStart="10dp" android:paddingEnd="10dp" />
+
+        <Button android:id="@+id/btnLogout"
+            android:layout_width="wrap_content" android:layout_height="36dp"
+            android:text="🚪" android:textSize="16sp"
+            android:background="@drawable/btn_danger_bg"
+            android:textColor="@color/white"
+            android:layout_marginStart="4dp" android:paddingStart="10dp" android:paddingEnd="10dp" />
+    </LinearLayout>
+
+    <!-- ── SCROLLABLE CONTENT ── -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- KNN Status -->
+            <TextView
+                android:id="@+id/tvKnnStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="KNN: Memuat..."
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                android:layout_marginBottom="8dp" />
+
+            <!-- Loading Panel -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/layoutLoading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/WiSeeCard"
+                android:visibility="visible">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="24dp" android:gravity="center">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="⏳ Memuat Model KNN..." android:textColor="@color/orange"
+                        android:textSize="17sp" android:textStyle="bold" android:layout_marginBottom="12dp" />
+                    <ProgressBar android:id="@+id/pbKnn"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:max="100" android:progress="0"
+                        android:progressTint="@color/orange" android:layout_marginBottom="8dp" />
+                    <TextView android:id="@+id/tvLoadStatus"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Dataset: az_dataset.csv.gz (built-in)"
+                        android:textColor="@color/text_secondary" android:textSize="12sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ── DRAWING CARD ── -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/WiSeeCard">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="16dp">
+
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="✍️ Tulis Kata di Sini"
+                        android:textColor="@color/orange" android:textSize="17sp"
+                        android:textStyle="bold" android:layout_marginBottom="4dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Tulis satu kata dengan huruf kapital, lalu tekan Kenali"
+                        android:textColor="@color/text_secondary" android:textSize="12sp"
+                        android:layout_marginBottom="12dp" />
+
+                    <!-- Canvas -->
+                    <com.wisee.ui.views.DrawingView
+                        android:id="@+id/drawingView"
+                        android:layout_width="match_parent"
+                        android:layout_height="220dp"
+                        android:background="@drawable/canvas_bg"
+                        android:layout_marginBottom="12dp" />
+
+                    <!-- Uploaded image preview -->
+                    <ImageView
+                        android:id="@+id/ivUpload"
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:scaleType="fitCenter"
+                        android:visibility="gone"
+                        android:layout_marginBottom="8dp" />
+
+                    <!-- Action Buttons -->
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:weightSum="3">
+
+                        <Button android:id="@+id/btnClear"
+                            android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:text="🗑️ Hapus"
+                            style="@style/WiSeeButton.Outline" android:layout_marginEnd="6dp" />
+
+                        <Button android:id="@+id/btnRecognize"
+                            android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1.4" android:text="🔍 Kenali!"
+                            style="@style/WiSeeButton.Primary" android:layout_marginEnd="6dp" />
+
+                        <Button android:id="@+id/btnCamera"
+                            android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="0.6" android:text="📸"
+                            style="@style/WiSeeButton.Secondary" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ── RESULT CARD ── -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardResult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/WiSeeCard"
+                android:visibility="gone">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="20dp">
+
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="🎯 Hasil Pengenalan"
+                        android:textColor="@color/orange" android:textSize="17sp"
+                        android:textStyle="bold" android:layout_marginBottom="12dp" />
+
+                    <!-- Word result box -->
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="vertical" android:gravity="center"
+                        android:background="@drawable/result_box_bg"
+                        android:padding="16dp" android:layout_marginBottom="12dp">
+
+                        <TextView android:id="@+id/tvResultEmoji"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="🐱" android:textSize="48sp" />
+
+                        <TextView android:id="@+id/tvResultWord"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="KUCING" android:textColor="@color/orange"
+                            android:textSize="36sp" android:textStyle="bold" />
+
+                        <TextView android:id="@+id/tvResultCategory"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="📁 HEWAN" android:textColor="@color/blue"
+                            android:textSize="13sp" android:textStyle="bold"
+                            android:background="@drawable/cat_badge_bg"
+                            android:paddingStart="12dp" android:paddingEnd="12dp"
+                            android:paddingTop="4dp" android:paddingBottom="4dp"
+                            android:layout_marginTop="6dp" />
+                    </LinearLayout>
+
+                    <!-- Description -->
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="📖 Deskripsi:" android:textColor="@color/text_secondary"
+                        android:textSize="12sp" android:textStyle="bold"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView android:id="@+id/tvResultDesc"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="" android:textColor="@color/text_primary"
+                        android:textSize="14sp" android:lineSpacingExtra="4dp"
+                        android:background="@drawable/desc_box_bg" android:padding="12dp"
+                        android:layout_marginBottom="12dp" />
+
+                    <!-- Action buttons -->
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:weightSum="2">
+
+                        <Button android:id="@+id/btnSpeak"
+                            android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:text="🔊 Putar Suara"
+                            android:backgroundTint="@color/yellow"
+                            android:textColor="@color/white" android:textStyle="bold"
+                            android:textSize="13sp"
+                            style="@style/WiSeeButton.Primary"
+                            android:layout_marginEnd="8dp" />
+
+                        <Button android:id="@+id/btnSave"
+                            android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:text="💾 Simpan"
+                            style="@style/WiSeeButton.Success" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ── UNKNOWN CARD ── -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardUnknown"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/WiSeeCard"
+                android:visibility="gone">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="20dp"
+                    android:background="@drawable/warning_box_bg">
+
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="🤔 Kata Belum Dikenal"
+                        android:textColor="@color/warning" android:textSize="17sp"
+                        android:textStyle="bold" android:layout_marginBottom="8dp" />
+
+                    <TextView android:id="@+id/tvUnknownMsg"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="" android:textColor="@color/text_primary"
+                        android:textSize="13sp" android:lineSpacingExtra="4dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ── VOCAB PANEL ── -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/WiSeeCard">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="16dp">
+
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="📖 Kosakata"
+                        android:textColor="@color/orange" android:textSize="17sp"
+                        android:textStyle="bold" android:layout_marginBottom="8dp" />
+
+                    <!-- Search -->
+                    <SearchView
+                        android:id="@+id/svSearch"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:queryHint="🔍  Cari kata..."
+                        android:background="@drawable/input_bg"
+                        android:layout_marginBottom="8dp" />
+
+                    <!-- Category chips -->
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scrollbars="none"
+                        android:layout_marginBottom="8dp">
+                        <com.google.android.material.chip.ChipGroup
+                            android:id="@+id/cgCategories"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:singleSelection="true"
+                            app:selectionRequired="true" />
+                    </HorizontalScrollView>
+
+                    <!-- Vocab grid -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvVocab"
+                        android:layout_width="match_parent"
+                        android:layout_height="320dp"
+                        android:nestedScrollingEnabled="false" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

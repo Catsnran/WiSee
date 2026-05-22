@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- WiSee Palette -->
+    <color name="orange">#EF7722</color>
+    <color name="orange_dark">#D4661A</color>
+    <color name="orange_light">#FFF4EC</color>
+    <color name="yellow">#FAA533</color>
+    <color name="yellow_light">#FFF8EC</color>
+    <color name="blue">#0BA6DF</color>
+    <color name="blue_dark">#0888BB</color>
+    <color name="blue_light">#E5F6FD</color>
+    <color name="light_gray">#EBEBEB</color>
+    <color name="bg">#FFF8F0</color>
+    <color name="card_bg">#FFFFFF</color>
+    <color name="border">#E8E4DF</color>
+    <color name="text_primary">#333333</color>
+    <color name="text_secondary">#888888</color>
+    <color name="text_light">#BBBBBB</color>
+
+    <!-- Status -->
+    <color name="success">#2ECC71</color>
+    <color name="success_light">#F0FFF4</color>
+    <color name="danger">#E74C3C</color>
+    <color name="danger_light">#FFF0F0</color>
+    <color name="warning">#F39C12</color>
+    <color name="warning_light">#FFFBEE</color>
+
+    <!-- Vocab chip -->
+    <color name="chip_bg">#FFF4EC</color>
+    <color name="chip_text">#C45E10</color>
+
+    <!-- System -->
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="transparent">#00000000</color>
+</resources>

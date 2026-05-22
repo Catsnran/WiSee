@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg">#FFF8F0</color>
+    <color name="black">#000000</color>
+    <color name="blue">#0BA6DF</color>
+    <color name="blue_dark">#0888BB</color>
+    <color name="blue_light">#E5F6FD</color>
+    <color name="border">#E8E4DF</color>
+    <color name="card_bg">#FFFFFF</color>
+    <color name="chip_bg">#FFF4EC</color>
+    <color name="chip_text">#C45E10</color>
+    <color name="danger">#E74C3C</color>
+    <color name="danger_light">#FFF0F0</color>
+    <color name="light_gray">#EBEBEB</color>
+    <color name="orange">#EF7722</color>
+    <color name="orange_dark">#D4661A</color>
+    <color name="orange_light">#FFF4EC</color>
+    <color name="success">#2ECC71</color>
+    <color name="success_light">#F0FFF4</color>
+    <color name="text_light">#BBBBBB</color>
+    <color name="text_primary">#333333</color>
+    <color name="text_secondary">#888888</color>
+    <color name="transparent">#00000000</color>
+    <color name="warning">#F39C12</color>
+    <color name="warning_light">#FFFBEE</color>
+    <color name="white">#FFFFFF</color>
+    <color name="yellow">#FAA533</color>
+    <color name="yellow_light">#FFF8EC</color>
+    <dimen name="btn_radius">14dp</dimen>
+    <dimen name="card_radius">18dp</dimen>
+    <dimen name="drawing_canvas_height">220dp</dimen>
+    <dimen name="padding_large">24dp</dimen>
+    <dimen name="padding_medium">16dp</dimen>
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_xlarge">32dp</dimen>
+    <dimen name="text_body">14sp</dimen>
+    <dimen name="text_emoji">36sp</dimen>
+    <dimen name="text_h1">22sp</dimen>
+    <dimen name="text_h2">18sp</dimen>
+    <dimen name="text_huge">40sp</dimen>
+    <dimen name="text_small">12sp</dimen>
+    <dimen name="text_title">26sp</dimen>
+    <string name="app_name">WiSee</string>
+    <string name="app_tagline">Fun Learning for Kids ✨</string>
+    <string name="clear">🗑️ Hapus</string>
+    <string name="go_login">Masuk di sini →</string>
+    <string name="go_register">Daftar di sini →</string>
+    <string name="have_account">Sudah punya akun?</string>
+    <string name="history">📜 Riwayat</string>
+    <string name="login_btn">🚀 Masuk Sekarang!</string>
+    <string name="login_title">Masuk ke WiSee</string>
+    <string name="logout">🚪 Keluar</string>
+    <string name="no_account">Belum punya akun?</string>
+    <string name="password_hint">Password</string>
+    <string name="recognize">🔍 Kenali Tulisan!</string>
+    <string name="register_btn">🌟 Daftar Sekarang!</string>
+    <string name="register_title">Daftar ke WiSee</string>
+    <string name="save">💾 Simpan</string>
+    <string name="speak">🔊 Putar Suara</string>
+    <string name="username_hint">Username</string>
+    <string name="vocab">📖 Kosakata</string>
+    <style name="Theme.WiSee" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/orange</item>
+        <item name="colorPrimaryVariant">@color/orange_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/blue</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="android:windowBackground">@color/bg</item>
+        <item name="android:statusBarColor">@color/orange</item>
+        <item name="android:navigationBarColor">@color/orange</item>
+    </style>
+    <style name="Theme.WiSee.Splash" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowBackground">@color/orange</item>
+        <item name="android:statusBarColor">@color/orange</item>
+    </style>
+    <style name="WiSeeButton.Danger" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@null</item>
+        <item name="android:background">@drawable/btn_danger_full_bg</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="cornerRadius">10dp</item>
+    </style>
+    <style name="WiSeeButton.Outline" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:textColor">@color/orange</item>
+        <item name="strokeColor">@color/orange</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="cornerRadius">12dp</item>
+    </style>
+    <style name="WiSeeButton.Primary" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@null</item>
+        <item name="android:background">@drawable/btn_primary_bg</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingBottom">14dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="cornerRadius">14dp</item>
+    </style>
+    <style name="WiSeeButton.Secondary" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@null</item>
+        <item name="android:background">@drawable/btn_secondary_bg</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="cornerRadius">12dp</item>
+    </style>
+    <style name="WiSeeButton.Success" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@null</item>
+        <item name="android:background">@drawable/btn_success_bg</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="cornerRadius">12dp</item>
+    </style>
+    <style name="WiSeeCard" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/card_bg</item>
+        <item name="cardCornerRadius">18dp</item>
+        <item name="cardElevation">3dp</item>
+        <item name="android:layout_marginBottom">12dp</item>
+    </style>
+</resources>

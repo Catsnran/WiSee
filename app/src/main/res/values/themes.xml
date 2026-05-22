@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ── Base App Theme ──────────────────────────────────── -->
+    <!-- Use Theme.MaterialComponents.Light.NoActionBar from material:1.11.0 -->
+    <style name="Theme.WiSee" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/orange</item>
+        <item name="colorPrimaryVariant">@color/orange_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/blue</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="android:windowBackground">@color/bg</item>
+        <item name="android:statusBarColor">@color/orange</item>
+        <item name="android:navigationBarColor">@color/orange</item>
+    </style>
+
+    <!-- ── Splash Theme ────────────────────────────────────── -->
+    <style name="Theme.WiSee.Splash" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowBackground">@color/orange</item>
+        <item name="android:statusBarColor">@color/orange</item>
+    </style>
+
+    <!-- ── Button Styles ───────────────────────────────────── -->
+    <style name="WiSeeButton.Primary" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@null</item>
+        <item name="android:background">@drawable/btn_primary_bg</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingBottom">14dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="cornerRadius">14dp</item>
+    </style>
+
+    <style name="WiSeeButton.Secondary" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@null</item>
+        <item name="android:background">@drawable/btn_secondary_bg</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="cornerRadius">12dp</item>
+    </style>
+
+    <style name="WiSeeButton.Outline" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:textColor">@color/orange</item>
+        <item name="strokeColor">@color/orange</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="cornerRadius">12dp</item>
+    </style>
+
+    <style name="WiSeeButton.Success" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@null</item>
+        <item name="android:background">@drawable/btn_success_bg</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="cornerRadius">12dp</item>
+    </style>
+
+    <style name="WiSeeButton.Danger" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@null</item>
+        <item name="android:background">@drawable/btn_danger_full_bg</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="cornerRadius">10dp</item>
+    </style>
+
+    <!-- ── Card Style ──────────────────────────────────────── -->
+    <style name="WiSeeCard" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/card_bg</item>
+        <item name="cardCornerRadius">18dp</item>
+        <item name="cardElevation">3dp</item>
+        <item name="android:layout_marginBottom">12dp</item>
+    </style>
+
+</resources>
