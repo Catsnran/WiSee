@@ -13,16 +13,6 @@ android {
         versionCode 1
         versionName "1.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        // Baca HF_TOKEN dari local.properties
-        // Cara pakai: tambahkan baris  HF_TOKEN=hf_xxxxx  di file local.properties
-        def props = new Properties()
-        def propsFile = rootProject.file('local.properties')
-        if (propsFile.exists()) {
-            props.load(propsFile.newDataInputStream())
-        }
-        def hfToken = props.getProperty('HF_TOKEN', '')
-        buildConfigField "String", "HF_TOKEN", "\"${hfToken}\""
     }
 
     buildTypes {

@@ -100,7 +100,7 @@ public class ResultActivity extends AppCompatActivity {
     // ─────────────────────────────────────────────────────────
     //  IMAGE GENERATION — 3-layer strategy:
     //  1. Cache lokal (instant)
-    //  2. HuggingFace API (online, dengan retry + wait-for-model)
+    //  2. Pollination
     //  3. Fallback lokal: render emoji besar dari Canvas (offline, instant)
     // ─────────────────────────────────────────────────────────
     private void generateIllustration() {
@@ -131,7 +131,7 @@ public class ResultActivity extends AppCompatActivity {
                             "🎨 Generating... (percobaan " + finalAttempt + "/3)"
                     ));
 
-                    imgBytes = callHuggingFace(null, prompt);
+                    imgBytes = callPollination(prompt);
                     if (imgBytes != null) break;
 
                     if (attempt < 3) Thread.sleep(3000);
@@ -176,10 +176,10 @@ public class ResultActivity extends AppCompatActivity {
     }
 
     /**
-     * Panggil HuggingFace Inference API.
+     * Panggil Pollinations.
      * Header x-wait-for-model: true → HF tunggu model load (tidak langsung 503).
      */
-    private byte[] callHuggingFace(String token, String prompt) throws Exception {
+    private byte[] callPollination(String prompt) throws Exception {
         // Pollinations.ai — gratis, tanpa API key, tanpa signup
         String encodedPrompt = java.net.URLEncoder.encode(prompt, "UTF-8");
         String endpoint = "https://image.pollinations.ai/prompt/" + encodedPrompt
@@ -365,35 +365,6 @@ public class ResultActivity extends AppCompatActivity {
         File dir = getExternalFilesDir("wisee_images");
         if (dir == null) dir = new File(getFilesDir(), "wisee_images");
         return dir.getAbsolutePath() + "/" + w.toLowerCase() + ".png";
-    }
-
-    /**
-     * Baca HF token dari berbagai sumber:
-     * 1. BuildConfig.HF_TOKEN (dari local.properties)
-     * 2. Langsung dari kode (hardcoded — untuk development)
-     */
-    /**
-     * Ambil HF Token dari BuildConfig.
-     *
-     * CARA SET TOKEN:
-     * ──────────────
-     * 1. Buka file  local.properties  (root project, jangan di-commit ke git!)
-     * 2. Tambahkan baris:   HF_TOKEN=hf_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-     * 3. Sync Gradle (klik "Sync Now" di Android Studio)
-     * 4. Build ulang aplikasi
-     *
-     * Dapat token gratis di: https://huggingface.co/settings/tokens
-     * Pilih "New token" → tipe "Read" → copy token-nya
-     *
-     * Jika token kosong/tidak ada → otomatis pakai ilustrasi lokal (offline)
-     */
-    private String getHfToken() {
-        String token = BuildConfig.HF_TOKEN;
-        Log.d(TAG, "Token value: [" + token + "]"); // tambah ini sementara
-        if (token != null && !token.isEmpty() && token.startsWith("hf_") && token.length() > 10) {
-            return token;
-        }
-        return null;
     }
 
     // ─────────────────────────────────────────────────────────
