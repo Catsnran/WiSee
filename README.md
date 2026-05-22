@@ -19,20 +19,6 @@ Aplikasi **Android** edukasi interaktif untuk anak-anak yang mengubah tulisan ta
 3. Tunggu Gradle sync selesai (~2-5 menit, perlu internet pertama kali)
 4. Klik ▶ Run atau Shift+F10
 ```
-
-### 3. Setup HuggingFace Token (opsional, untuk ilustrasi AI)
-Di terminal Android Studio:
-```bash
-# Set environment variable sebelum run
-export HF_TOKEN="hf_xxxxxxxxxxxxxxxx"
-```
-Atau edit `local.properties`:
-```
-HF_TOKEN=hf_xxxxxxxxxxxxxxxx
-```
-
----
-
 ## 📦 Dataset KNN (Built-in, Tidak Perlu Upload)
 
 Dataset sudah **ter-bundle** di dalam APK:
@@ -209,4 +195,4 @@ new KnowledgeFrame(
    - Settings → General Management → Language → Text-to-speech → Install Indonesian
 3. **Akurasi KNN** ~70-85% tergantung kejelasan tulisan (7.800 sampel)
    - Tips: tulis besar, tebal, satu kata, huruf kapital terpisah
-4. **Ilustrasi AI** butuh HF_TOKEN dan internet (opsional)
+4. **Ilustrasi AI** butuh internet(opsional)
