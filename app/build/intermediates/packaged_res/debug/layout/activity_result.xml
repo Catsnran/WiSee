@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg"
@@ -13,30 +14,30 @@
         <!-- ── TOP NAV ── -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:layout_height="65dp"
             android:background="@color/orange"
-            android:padding="14dp"
+            android:elevation="4dp"
             android:gravity="center_vertical"
-            android:elevation="4dp">
+            android:orientation="horizontal"
+            android:padding="14dp">
 
             <Button
                 android:id="@+id/btnBack"
-                android:layout_width="wrap_content"
-                android:layout_height="36dp"
-                android:text="←"
-                android:background="@drawable/btn_nav_bg"
-                android:textColor="@color/white"
-                android:textSize="18sp"
+                android:layout_width="58dp"
+                android:layout_height="65dp"
                 android:layout_marginEnd="12dp"
+                android:background="#00000000"
                 android:paddingStart="14dp"
-                android:paddingEnd="14dp" />
+                android:paddingEnd="14dp"
+                android:text="⬅️"
+                android:textColor="@color/bg"
+                android:textSize="20sp" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="🎯 Hasil Belajar"
+                android:text="            🎯 Hasil Belajar"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -44,14 +45,15 @@
             <Button
                 android:id="@+id/btnSave"
                 android:layout_width="wrap_content"
-                android:layout_height="36dp"
+                android:layout_height="65dp"
+                android:background="#00000000"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
                 android:text="💾 Simpan"
-                android:background="@drawable/btn_nav_bg"
                 android:textColor="@color/white"
                 android:textSize="12sp"
                 android:textStyle="bold"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp" />
+                app:iconPadding="0dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -260,7 +262,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="💡 Ilustrasi dibuat oleh AI (HuggingFace FLUX).\nPerlu koneksi internet dan HF_TOKEN."
+                        android:text="💡 Ilustrasi dibuat oleh AI (Pollinations FLUX).\nPerlu koneksi internet."
                         android:textColor="@color/text_light"
                         android:textSize="11sp"
                         android:gravity="center"

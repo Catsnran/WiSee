@@ -7,7 +7,7 @@ import java.util.*;
 import java.util.function.Consumer;
 
 /**
- * KNN Classifier — memuat dataset dari assets/dataset/az_dataset.bin
+ * KNN Classifier — memuat dataset dari assets/dataset/az_emnist_combined.bin
  * Pure Java, tanpa library eksternal.
  * K=5, Euclidean distance, 784 fitur (28×28 pixel).
  */
@@ -69,7 +69,7 @@ public class KnnService {
         try {
             // Baca binary langsung — jauh lebih cepat dari CSV+GZIP
             DataInputStream dis = new DataInputStream(
-                    new BufferedInputStream(ctx.getAssets().open("dataset/az_dataset.bin"), 1 << 16)
+                    new BufferedInputStream(ctx.getAssets().open("dataset/az_emnist_combined.bin"), 1 << 16)
             );
 
             trainSize   = dis.readInt();

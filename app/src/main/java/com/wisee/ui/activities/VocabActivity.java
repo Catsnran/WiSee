@@ -56,7 +56,7 @@ public class VocabActivity extends AppCompatActivity {
         for (String cat : kfs.getCategories()) {
             Chip chip = makeChip(cat);
             chip.setOnClickListener(vv -> refresh(chip.getText().toString(),
-                svSearch.getQuery().toString()));
+                    svSearch.getQuery().toString()));
             cgCat.addView(chip);
         }
 

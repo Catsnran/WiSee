@@ -7,22 +7,14 @@
     android:background="@color/orange"
     android:padding="40dp">
 
-    <!-- Logo area -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="✨"
-        android:textSize="72sp"
+    <!-- Logo WiSee -->
+    <ImageView
+        android:layout_width="240dp"
+        android:layout_height="120dp"
+        android:src="@drawable/ic_wisee_logo"
+        android:scaleType="fitCenter"
+        android:contentDescription="WiSee Logo"
         android:layout_marginBottom="16dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="WiSee"
-        android:textColor="@color/white"
-        android:textSize="48sp"
-        android:textStyle="bold"
-        android:fontFamily="sans-serif-medium" />
 
     <TextView
         android:layout_width="wrap_content"

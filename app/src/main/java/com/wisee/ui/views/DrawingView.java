@@ -67,6 +67,7 @@ public class DrawingView extends View {
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
+                // ── FIX #4: Minta parent (ScrollView) berhenti intercept touch ──
                 if (getParent() != null) {
                     getParent().requestDisallowInterceptTouchEvent(true);
                 }
@@ -75,6 +76,7 @@ public class DrawingView extends View {
                 break;
 
             case MotionEvent.ACTION_MOVE:
+                // Bezier curve untuk tulisan halus
                 path.quadTo(lastX, lastY, (x + lastX) / 2, (y + lastY) / 2);
                 lastX = x; lastY = y;
                 if (bitmapCanvas != null) {
@@ -87,6 +89,7 @@ public class DrawingView extends View {
 
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
+                // ── FIX #4: Kembalikan izin intercept ke parent ──
                 if (getParent() != null) {
                     getParent().requestDisallowInterceptTouchEvent(false);
                 }

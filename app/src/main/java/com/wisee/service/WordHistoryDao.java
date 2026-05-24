@@ -26,6 +26,6 @@ public interface WordHistoryDao {
 
     // Returns only category column for favorite
     @Query("SELECT category FROM word_history WHERE userId = :userId " +
-           "GROUP BY category ORDER BY COUNT(*) DESC LIMIT 1")
+            "GROUP BY category ORDER BY COUNT(*) DESC LIMIT 1")
     String getFavoriteCategory(int userId);
 }

@@ -42,11 +42,11 @@ public class DatabaseService {
                 return;
             }
             User user = new User(
-                username.toLowerCase().trim(),
-                displayName.trim(),
-                email.toLowerCase().trim(),
-                HashUtil.sha256(password),
-                LocalDateTime.now().toString()
+                    username.toLowerCase().trim(),
+                    displayName.trim(),
+                    email.toLowerCase().trim(),
+                    HashUtil.sha256(password),
+                    LocalDateTime.now().toString()
             );
             try {
                 db.userDao().insert(user);
