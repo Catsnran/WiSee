@@ -1,6 +1,5 @@
 package com.wisee.ui.activities;
 
-import com.wisee.BuildConfig;
 import android.graphics.*;
 import android.os.Bundle;
 import android.util.Log;
@@ -266,8 +265,8 @@ public class ResultActivity extends AppCompatActivity {
         // Gradient background
         Paint bgPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         RadialGradient gradient = new RadialGradient(
-            size / 2f, size / 2f, size / 1.5f,
-            colors[0], colors[1], Shader.TileMode.CLAMP
+                size / 2f, size / 2f, size / 1.5f,
+                colors[0], colors[1], Shader.TileMode.CLAMP
         );
         bgPaint.setShader(gradient);
         canvas.drawRoundRect(0, 0, size, size, 40, 40, bgPaint);
@@ -373,8 +372,8 @@ public class ResultActivity extends AppCompatActivity {
     private void saveHistory() {
         int userId = SessionService.getInstance().getCurrentUser().id;
         WordHistory h = new WordHistory(
-            userId, word, frame.category, frame.emoji,
-            frame.audioText, LocalDateTime.now().toString()
+                userId, word, frame.category, frame.emoji,
+                frame.audioText, LocalDateTime.now().toString()
         );
         DatabaseService.saveHistory(h, ok -> runOnUiThread(() -> {
             if (ok) {
