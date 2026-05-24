@@ -1,9 +1,13 @@
 package com.wisee.ui.activities;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.*;
@@ -11,6 +15,8 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.chip.Chip;
@@ -27,6 +33,9 @@ import com.wisee.ui.views.DrawingView;
 import com.wisee.util.ImageProcessor;
 import com.wisee.util.TtsUtil;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.concurrent.ExecutorService;
@@ -55,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
     private String          currentWord;
     private Bitmap          uploadedBitmap;
     private VocabAdapter    vocabAdapter;
+    private Uri             cameraImageUri;
 
     private final ExecutorService exec = Executors.newSingleThreadExecutor();
 
@@ -73,6 +83,31 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+    // ── Camera launcher ──────────────────────────────────────────
+    private final ActivityResultLauncher<Intent> takePicture =
+            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+                if (result.getResultCode() == RESULT_OK && cameraImageUri != null) {
+                    try {
+                        uploadedBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), cameraImageUri);
+                        ivUpload.setImageBitmap(uploadedBitmap);
+                        ivUpload.setVisibility(View.VISIBLE);
+                        drawingView.clear();
+                    } catch (Exception e) {
+                        toast("Gagal memuat foto");
+                    }
+                }
+            });
+
+    // ── Camera permission launcher ───────────────────────────────
+    private final ActivityResultLauncher<String> cameraPermissionLauncher =
+            registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
+                if (isGranted) {
+                    openCamera();
+                } else {
+                    toast("Izin kamera diperlukan untuk mengambil foto");
+                }
+            });
 
     // ─────────────────────────────────────────────────────────
     @Override
@@ -429,6 +464,26 @@ public class MainActivity extends AppCompatActivity {
     // ─────────────────────────────────────────────────────────
     //  Helpers
     // ─────────────────────────────────────────────────────────
+    private void openCamera() {
+        try {
+            File photoFile = createImageFile();
+            cameraImageUri = FileProvider.getUriForFile(this,
+                    getPackageName() + ".fileprovider", photoFile);
+            Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, cameraImageUri);
+            takePicture.launch(cameraIntent);
+        } catch (IOException e) {
+            toast("Gagal membuka kamera");
+        }
+    }
+
+    private File createImageFile() throws IOException {
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
+        String fileName = "WISEE_" + timeStamp;
+        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        return File.createTempFile(fileName, ".jpg", storageDir);
+    }
+
     private void toast(String msg) {
         runOnUiThread(() -> Toast.makeText(this, msg, Toast.LENGTH_SHORT).show());
     }
