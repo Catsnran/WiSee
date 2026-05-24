@@ -32,6 +32,7 @@ import com.wisee.ui.adapters.VocabAdapter;
 import com.wisee.ui.views.DrawingView;
 import com.wisee.util.ImageProcessor;
 import com.wisee.util.TtsUtil;
+import com.wisee.util.NegativeWordFilter;
 
 import java.io.File;
 import java.io.IOException;
@@ -68,21 +69,21 @@ public class MainActivity extends AppCompatActivity {
 
     private final ExecutorService exec = Executors.newSingleThreadExecutor();
 
-    // ── Image picker launcher ──────────────────────────────────
+    // ── Image picker launcher (gallery) ──────────────────────────
     private final ActivityResultLauncher<Intent> pickImage =
-        registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
-            if (result.getResultCode() == RESULT_OK && result.getData() != null) {
-                try {
-                    Uri uri = result.getData().getData();
-                    uploadedBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                    ivUpload.setImageBitmap(uploadedBitmap);
-                    ivUpload.setVisibility(View.VISIBLE);
-                    drawingView.clear();
-                } catch (Exception e) {
-                    toast("Gagal memuat gambar");
+            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+                if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                    try {
+                        Uri uri = result.getData().getData();
+                        uploadedBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                        ivUpload.setImageBitmap(uploadedBitmap);
+                        ivUpload.setVisibility(View.VISIBLE);
+                        drawingView.clear();
+                    } catch (Exception e) {
+                        toast("Gagal memuat gambar");
+                    }
                 }
-            }
-        });
+            });
 
     // ── Camera launcher ──────────────────────────────────────────
     private final ActivityResultLauncher<Intent> takePicture =
@@ -127,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             showLoadingUI();
             knn.addProgressListener(p -> runOnUiThread(() ->
-                pbKnn.setProgress((int)(p * 100))));
+                    pbKnn.setProgress((int)(p * 100))));
             knn.addDoneListener(ok -> runOnUiThread(() -> {
                 if (ok) showMainUI();
                 else tvLoadStatus.setText("❌ Gagal load KNN: " + knn.getLoadError());
@@ -174,9 +175,25 @@ public class MainActivity extends AppCompatActivity {
         btnRecognize.setOnClickListener(v -> runRecognition());
 
         btnCamera.setOnClickListener(v -> {
-            Intent intent = new Intent(Intent.ACTION_PICK,
-                MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-            pickImage.launch(intent);
+            new AlertDialog.Builder(this)
+                    .setTitle("📷 Pilih Sumber Gambar")
+                    .setItems(new String[]{"📸 Ambil Foto dari Kamera", "📁 Pilih dari Galeri"}, (d, which) -> {
+                        if (which == 0) {
+                            // Kamera
+                            if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                                    == PackageManager.PERMISSION_GRANTED) {
+                                openCamera();
+                            } else {
+                                cameraPermissionLauncher.launch(Manifest.permission.CAMERA);
+                            }
+                        } else {
+                            // Galeri
+                            Intent intent = new Intent(Intent.ACTION_PICK,
+                                    MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                            pickImage.launch(intent);
+                        }
+                    })
+                    .show();
         });
 
         btnSpeak.setOnClickListener(v -> {
@@ -198,24 +215,24 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupNavBar() {
         findViewById(R.id.btnHistory).setOnClickListener(v ->
-            startActivity(new Intent(this, HistoryActivity.class)));
+                startActivity(new Intent(this, HistoryActivity.class)));
 
         findViewById(R.id.btnVocab).setOnClickListener(v ->
-            startActivity(new Intent(this, VocabActivity.class)));
+                startActivity(new Intent(this, VocabActivity.class)));
 
         findViewById(R.id.btnLogout).setOnClickListener(v -> {
             new AlertDialog.Builder(this)
-                .setTitle("🚪 Keluar dari WiSee?")
-                .setMessage("Apakah kamu yakin ingin keluar?")
-                .setPositiveButton("Ya, Keluar", (d, w) -> {
-                    TtsUtil.getInstance().stop();
-                    SessionService.getInstance().logout();
-                    Intent intent = new Intent(this, LoginActivity.class);
-                    startActivity(intent);
-                    finishAffinity();
-                })
-                .setNegativeButton("Batal", null)
-                .show();
+                    .setTitle("🚪 Keluar dari WiSee?")
+                    .setMessage("Apakah kamu yakin ingin keluar?")
+                    .setPositiveButton("Ya, Keluar", (d, w) -> {
+                        TtsUtil.getInstance().stop();
+                        SessionService.getInstance().logout();
+                        Intent intent = new Intent(this, LoginActivity.class);
+                        startActivity(intent);
+                        finishAffinity();
+                    })
+                    .setNegativeButton("Batal", null)
+                    .show();
         });
     }
 
@@ -287,6 +304,8 @@ public class MainActivity extends AppCompatActivity {
         vocabAdapter.update(all);
     }
 
+
+
     // ─────────────────────────────────────────────────────────
     //  Loading / Main UI state
     // ─────────────────────────────────────────────────────────
@@ -319,8 +338,8 @@ public class MainActivity extends AppCompatActivity {
             try {
                 String word;
                 Bitmap src = uploadedBitmap != null
-                    ? uploadedBitmap
-                    : drawingView.getBitmap();
+                        ? uploadedBitmap
+                        : drawingView.getBitmap();
 
                 if (src == null || isBlankBitmap(src)) {
                     runOnUiThread(() -> {
@@ -389,17 +408,41 @@ public class MainActivity extends AppCompatActivity {
         currentWord  = word;
         currentFrame = KnowledgeFrameService.getInstance().getFrame(word);
 
-        if (currentFrame != null) {
-            // Buka ResultActivity untuk detail lengkap
+        if (currentFrame != null && !currentFrame.safe) {
+            // Kata negatif ada di KB tapi safe=false → BLOKIR, jangan buka ResultActivity
+            currentFrame = null;
+            currentWord  = null;
+            showUnknown("⚠️ Maaf, kata \"" + word + "\" merupakan kata negatif dan tidak dapat ditampilkan.\n\n" +
+                    "Yuk coba tulis kata lain yang positif dan menyenangkan! " +
+                    "Misalnya nama hewan, buah, warna, atau tempat favoritmu. 🌟");
+            TextView title = findViewById(R.id.tvUnknownTitle);
+            if (title != null) {
+                title.setText("💝 Yuk Pakai Kata yang Baik!");
+            }
+
+        } else if (currentFrame != null) {
+            // Kata ada di knowledge base dan safe → buka ResultActivity
             Intent intent = new Intent(this, ResultActivity.class);
             intent.putExtra(ResultActivity.EXTRA_WORD, word);
             startActivity(intent);
-            // Juga tampilkan result card di main
             showResult(currentFrame);
+
+        } else if (NegativeWordFilter.isBlocked(word)) {
+            // FIX #2: Kata negatif yang tidak ada di KB → blokir di sini
+            currentFrame = null;
+            currentWord  = null;
+            showUnknown(NegativeWordFilter.getBlockMessage(word));
+            // Ganti judul card menjadi lebih ramah
+            TextView title = findViewById(R.id.tvUnknownTitle);
+            if (title != null) {
+                title.setText("💝 Yuk Pakai Kata yang Baik!");
+            }
+
         } else {
+            // Kata tidak dikenal, bukan negatif → tampilkan unknown
             showUnknown("Tulisan terbaca: \"" + word + "\"\n\n" +
-                "Kata ini belum ada di basis pengetahuan WiSee. " +
-                "Coba tulis lebih jelas atau pilih kata dari kosakata di bawah!");
+                    "Kata ini belum ada di basis pengetahuan WiSee. " +
+                    "Coba tulis lebih jelas atau pilih kata dari kosakata di bawah!");
         }
     }
 
@@ -444,11 +487,11 @@ public class MainActivity extends AppCompatActivity {
         if (currentFrame == null || currentWord == null) return;
         int userId = SessionService.getInstance().getCurrentUser().id;
         WordHistory h = new WordHistory(
-            userId, currentWord,
-            currentFrame.category,
-            currentFrame.emoji,
-            currentFrame.audioText,
-            LocalDateTime.now().toString()
+                userId, currentWord,
+                currentFrame.category,
+                currentFrame.emoji,
+                currentFrame.audioText,
+                LocalDateTime.now().toString()
         );
         DatabaseService.saveHistory(h, ok -> runOnUiThread(() -> {
             if (ok) {
