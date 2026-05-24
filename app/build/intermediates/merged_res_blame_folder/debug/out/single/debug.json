@@ -1,126 +1,142 @@
 [
     {
-        "merged": "com.wisee.app-merged_res-37:/drawable_btn_danger_full_bg.xml.flat",
-        "source": "com.wisee.app-main-39:/drawable/btn_danger_full_bg.xml"
+        "merged": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-merged_res-37:\\drawable_cat_badge_bg.xml.flat",
+        "source": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-main-39:\\drawable\\cat_badge_bg.xml"
     },
     {
-        "merged": "com.wisee.app-merged_res-37:/layout_activity_main.xml.flat",
-        "source": "com.wisee.app-main-39:/layout/activity_main.xml"
+        "merged": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-merged_res-37:\\layout_activity_login.xml.flat",
+        "source": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-main-39:\\layout\\activity_login.xml"
     },
     {
-        "merged": "com.wisee.app-merged_res-37:/drawable_btn_danger_bg.xml.flat",
-        "source": "com.wisee.app-main-39:/drawable/btn_danger_bg.xml"
+        "merged": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-merged_res-37:\\layout_activity_vocab.xml.flat",
+        "source": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-main-39:\\layout\\activity_vocab.xml"
     },
     {
-        "merged": "com.wisee.app-merged_res-37:/mipmap-xhdpi_ic_launcher.png.flat",
-        "source": "com.wisee.app-main-39:/mipmap-xhdpi/ic_launcher.png"
+        "merged": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-merged_res-37:\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-main-39:\\mipmap-mdpi\\ic_launcher.png"
     },
     {
-        "merged": "com.wisee.app-merged_res-37:/layout_activity_history.xml.flat",
-        "source": "com.wisee.app-main-39:/layout/activity_history.xml"
+        "merged": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-merged_res-37:\\drawable_btn_danger_full_bg.xml.flat",
+        "source": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-main-39:\\drawable\\btn_danger_full_bg.xml"
     },
     {
-        "merged": "com.wisee.app-merged_res-37:/layout_item_vocab.xml.flat",
-        "source": "com.wisee.app-main-39:/layout/item_vocab.xml"
+        "merged": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-merged_res-37:\\drawable_btn_danger_bg.xml.flat",
+        "source": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-main-39:\\drawable\\btn_danger_bg.xml"
     },
     {
-        "merged": "com.wisee.app-merged_res-37:/mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "com.wisee.app-main-39:/mipmap-xxhdpi/ic_launcher.png"
-    },
-    {
-        "merged": "com.wisee.app-merged_res-37:/mipmap-hdpi_ic_launcher.png.flat",
-        "source": "com.wisee.app-main-39:/mipmap-hdpi/ic_launcher.png"
-    },
-    {
-        "merged": "com.wisee.app-merged_res-37:/drawable_input_bg.xml.flat",
-        "source": "com.wisee.app-main-39:/drawable/input_bg.xml"
+        "merged": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-merged_res-37:\\drawable_error_bg.xml.flat",
+        "source": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-main-39:\\drawable\\error_bg.xml"
     },
     {
         "merged": "com.wisee.app-merged_res-37:/layout_activity_login.xml.flat",
         "source": "com.wisee.app-main-39:/layout/activity_login.xml"
     },
     {
-        "merged": "com.wisee.app-merged_res-37:/drawable_btn_secondary_bg.xml.flat",
-        "source": "com.wisee.app-main-39:/drawable/btn_secondary_bg.xml"
+        "merged": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-merged_res-37:\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-main-39:\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-merged_res-37:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-main-39:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-merged_res-37:\\drawable_warning_box_bg.xml.flat",
+        "source": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-main-39:\\drawable\\warning_box_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-merged_res-37:\\drawable_desc_box_bg.xml.flat",
+        "source": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-main-39:\\drawable\\desc_box_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-merged_res-37:\\drawable_btn_outline_bg.xml.flat",
+        "source": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-main-39:\\drawable\\btn_outline_bg.xml"
     },
     {
         "merged": "com.wisee.app-merged_res-37:/layout_activity_result.xml.flat",
         "source": "com.wisee.app-main-39:/layout/activity_result.xml"
     },
     {
-        "merged": "com.wisee.app-merged_res-37:/drawable_cat_badge_bg.xml.flat",
-        "source": "com.wisee.app-main-39:/drawable/cat_badge_bg.xml"
+        "merged": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-merged_res-37:\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-main-39:\\mipmap-xhdpi\\ic_launcher.png"
     },
     {
-        "merged": "com.wisee.app-merged_res-37:/mipmap-mdpi_ic_launcher.png.flat",
-        "source": "com.wisee.app-main-39:/mipmap-mdpi/ic_launcher.png"
+        "merged": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-merged_res-37:\\layout_activity_register.xml.flat",
+        "source": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-main-39:\\layout\\activity_register.xml"
     },
     {
-        "merged": "com.wisee.app-merged_res-37:/color_chip_text_selector.xml.flat",
-        "source": "com.wisee.app-main-39:/color/chip_text_selector.xml"
+        "merged": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-merged_res-37:\\drawable_btn_primary_bg.xml.flat",
+        "source": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-main-39:\\drawable\\btn_primary_bg.xml"
     },
     {
-        "merged": "com.wisee.app-merged_res-37:/drawable_btn_success_bg.xml.flat",
-        "source": "com.wisee.app-main-39:/drawable/btn_success_bg.xml"
+        "merged": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-merged_res-37:\\layout_activity_result.xml.flat",
+        "source": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-main-39:\\layout\\activity_result.xml"
     },
     {
-        "merged": "com.wisee.app-merged_res-37:/drawable_success_bg.xml.flat",
-        "source": "com.wisee.app-main-39:/drawable/success_bg.xml"
+        "merged": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-merged_res-37:\\drawable_btn_danger_light_bg.xml.flat",
+        "source": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-main-39:\\drawable\\btn_danger_light_bg.xml"
     },
     {
-        "merged": "com.wisee.app-merged_res-37:/drawable_desc_box_bg.xml.flat",
-        "source": "com.wisee.app-main-39:/drawable/desc_box_bg.xml"
+        "merged": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-merged_res-37:\\drawable_success_bg.xml.flat",
+        "source": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-main-39:\\drawable\\success_bg.xml"
     },
     {
-        "merged": "com.wisee.app-merged_res-37:/drawable_error_bg.xml.flat",
-        "source": "com.wisee.app-main-39:/drawable/error_bg.xml"
+        "merged": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-merged_res-37:\\layout_activity_history.xml.flat",
+        "source": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-main-39:\\layout\\activity_history.xml"
     },
     {
-        "merged": "com.wisee.app-merged_res-37:/drawable_result_box_bg.xml.flat",
-        "source": "com.wisee.app-main-39:/drawable/result_box_bg.xml"
+        "merged": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-merged_res-37:\\drawable_result_box_bg.xml.flat",
+        "source": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-main-39:\\drawable\\result_box_bg.xml"
     },
     {
-        "merged": "com.wisee.app-merged_res-37:/layout_activity_splash.xml.flat",
-        "source": "com.wisee.app-main-39:/layout/activity_splash.xml"
+        "merged": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-merged_res-37:\\drawable_canvas_bg.xml.flat",
+        "source": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-main-39:\\drawable\\canvas_bg.xml"
     },
     {
-        "merged": "com.wisee.app-merged_res-37:/drawable_warning_box_bg.xml.flat",
-        "source": "com.wisee.app-main-39:/drawable/warning_box_bg.xml"
+        "merged": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-merged_res-37:\\drawable_btn_secondary_bg.xml.flat",
+        "source": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-main-39:\\drawable\\btn_secondary_bg.xml"
     },
     {
-        "merged": "com.wisee.app-merged_res-37:/layout_activity_vocab.xml.flat",
-        "source": "com.wisee.app-main-39:/layout/activity_vocab.xml"
+        "merged": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-merged_res-37:\\layout_item_history.xml.flat",
+        "source": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-main-39:\\layout\\item_history.xml"
     },
     {
-        "merged": "com.wisee.app-merged_res-37:/color_chip_selector.xml.flat",
-        "source": "com.wisee.app-main-39:/color/chip_selector.xml"
+        "merged": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-merged_res-37:\\drawable_input_bg.xml.flat",
+        "source": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-main-39:\\drawable\\input_bg.xml"
     },
     {
-        "merged": "com.wisee.app-merged_res-37:/drawable_canvas_bg.xml.flat",
-        "source": "com.wisee.app-main-39:/drawable/canvas_bg.xml"
+        "merged": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-merged_res-37:\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-main-39:\\mipmap-hdpi\\ic_launcher.png"
     },
     {
-        "merged": "com.wisee.app-merged_res-37:/drawable_btn_primary_bg.xml.flat",
-        "source": "com.wisee.app-main-39:/drawable/btn_primary_bg.xml"
+        "merged": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-merged_res-37:\\drawable_btn_success_bg.xml.flat",
+        "source": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-main-39:\\drawable\\btn_success_bg.xml"
     },
     {
-        "merged": "com.wisee.app-merged_res-37:/layout_item_history.xml.flat",
-        "source": "com.wisee.app-main-39:/layout/item_history.xml"
+        "merged": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-merged_res-37:\\xml_file_paths.xml.flat",
+        "source": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-main-39:\\xml\\file_paths.xml"
     },
     {
-        "merged": "com.wisee.app-merged_res-37:/drawable_btn_danger_light_bg.xml.flat",
-        "source": "com.wisee.app-main-39:/drawable/btn_danger_light_bg.xml"
+        "merged": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-merged_res-37:\\drawable_btn_nav_bg.xml.flat",
+        "source": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-main-39:\\drawable\\btn_nav_bg.xml"
     },
     {
-        "merged": "com.wisee.app-merged_res-37:/layout_activity_register.xml.flat",
-        "source": "com.wisee.app-main-39:/layout/activity_register.xml"
+        "merged": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-merged_res-37:\\layout_item_vocab.xml.flat",
+        "source": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-main-39:\\layout\\item_vocab.xml"
     },
     {
-        "merged": "com.wisee.app-merged_res-37:/drawable_btn_outline_bg.xml.flat",
-        "source": "com.wisee.app-main-39:/drawable/btn_outline_bg.xml"
+        "merged": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-merged_res-37:\\drawable_ic_wisee_logo.png.flat",
+        "source": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-main-39:\\drawable\\ic_wisee_logo.png"
     },
     {
-        "merged": "com.wisee.app-merged_res-37:/drawable_btn_nav_bg.xml.flat",
-        "source": "com.wisee.app-main-39:/drawable/btn_nav_bg.xml"
+        "merged": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-merged_res-37:\\layout_activity_splash.xml.flat",
+        "source": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-main-39:\\layout\\activity_splash.xml"
+    },
+    {
+        "merged": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-merged_res-37:\\color_chip_selector.xml.flat",
+        "source": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-main-39:\\color\\chip_selector.xml"
+    },
+    {
+        "merged": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-merged_res-37:\\color_chip_text_selector.xml.flat",
+        "source": "C:\\Users\\Lapto\\.gradle\\daemon\\8.2\\com.wisee.app-main-39:\\color\\chip_text_selector.xml"
     }
 ]

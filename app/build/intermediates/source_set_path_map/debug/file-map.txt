@@ -31,10 +31,10 @@ com.wisee.app-sqlite-2.4.0-29 C:\Users\Lapto\.gradle\caches\transforms-3\b8c756f
 com.wisee.app-lifecycle-livedata-2.7.0-30 C:\Users\Lapto\.gradle\caches\transforms-3\d91242d617d840cad3ecd3cb53fd48b0\transformed\lifecycle-livedata-2.7.0\res
 com.wisee.app-jetified-activity-1.8.0-31 C:\Users\Lapto\.gradle\caches\transforms-3\f36c10b960f5b2526fd55c97c3e65d18\transformed\jetified-activity-1.8.0\res
 com.wisee.app-lifecycle-livedata-core-2.7.0-32 C:\Users\Lapto\.gradle\caches\transforms-3\f3f672bdf304c8735be7b9bf6ee410ef\transformed\lifecycle-livedata-core-2.7.0\res
-com.wisee.app-pngs-33 D:\SEM4\AI\WiseeProject2\WiSeeAndroid\app\build\generated\res\pngs\debug
-com.wisee.app-resValues-34 D:\SEM4\AI\WiseeProject2\WiSeeAndroid\app\build\generated\res\resValues\debug
-com.wisee.app-packageDebugResources-35 D:\SEM4\AI\WiseeProject2\WiSeeAndroid\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
-com.wisee.app-packageDebugResources-36 D:\SEM4\AI\WiseeProject2\WiSeeAndroid\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
-com.wisee.app-merged_res-37 D:\SEM4\AI\WiseeProject2\WiSeeAndroid\app\build\intermediates\merged_res\debug
-com.wisee.app-debug-38 D:\SEM4\AI\WiseeProject2\WiSeeAndroid\app\src\debug\res
-com.wisee.app-main-39 D:\SEM4\AI\WiseeProject2\WiSeeAndroid\app\src\main\res
+com.wisee.app-pngs-33 D:\SEM4\AI\Git WiSee\WiSee\app\build\generated\res\pngs\debug
+com.wisee.app-resValues-34 D:\SEM4\AI\Git WiSee\WiSee\app\build\generated\res\resValues\debug
+com.wisee.app-packageDebugResources-35 D:\SEM4\AI\Git WiSee\WiSee\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.wisee.app-packageDebugResources-36 D:\SEM4\AI\Git WiSee\WiSee\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.wisee.app-merged_res-37 D:\SEM4\AI\Git WiSee\WiSee\app\build\intermediates\merged_res\debug
+com.wisee.app-debug-38 D:\SEM4\AI\Git WiSee\WiSee\app\src\debug\res
+com.wisee.app-main-39 D:\SEM4\AI\Git WiSee\WiSee\app\src\main\res

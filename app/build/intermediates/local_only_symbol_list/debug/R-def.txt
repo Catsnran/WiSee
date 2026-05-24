@@ -7,6 +7,7 @@ color blue_dark
 color blue_light
 color border
 color card_bg
+color card_bg_warm
 color chip_bg
 color chip_selector
 color chip_text
@@ -15,13 +16,19 @@ color danger
 color danger_light
 color light_gray
 color orange
+color orange_bg_light
 color orange_dark
+color orange_header
 color orange_light
+color shadow_soft
 color success
 color success_light
+color success_material
 color text_light
 color text_primary
+color text_primary_dark
 color text_secondary
+color text_secondary_medium
 color transparent
 color warning
 color warning_light
@@ -54,6 +61,7 @@ drawable canvas_bg
 drawable cat_badge_bg
 drawable desc_box_bg
 drawable error_bg
+drawable ic_wisee_logo
 drawable input_bg
 drawable result_box_bg
 drawable success_bg
@@ -113,6 +121,7 @@ id tvSuccess
 id tvTotalSessions
 id tvTotalWords
 id tvUnknownMsg
+id tvUnknownTitle
 id tvWord
 layout activity_history
 layout activity_login
@@ -151,3 +160,4 @@ style WiSeeButton.Primary
 style WiSeeButton.Secondary
 style WiSeeButton.Success
 style WiSeeCard
+xml file_paths

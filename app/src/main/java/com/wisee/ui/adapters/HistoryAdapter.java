@@ -34,7 +34,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.VH> {
     @NonNull @Override
     public VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-            .inflate(R.layout.item_history, parent, false);
+                .inflate(R.layout.item_history, parent, false);
         return new VH(v);
     }
 
@@ -52,7 +52,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.VH> {
         if (ts == null || ts.length() < 16) return "";
         try {
             String[] months = {"", "Jan","Feb","Mar","Apr","Mei","Jun",
-                               "Jul","Agt","Sep","Okt","Nov","Des"};
+                    "Jul","Agt","Sep","Okt","Nov","Des"};
             String[] parts = ts.split("T");
             String[] d = parts[0].split("-");
             String time = parts[1].substring(0, 5);

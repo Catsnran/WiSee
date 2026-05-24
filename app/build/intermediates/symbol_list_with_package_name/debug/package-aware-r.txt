@@ -1369,6 +1369,7 @@ color bright_foreground_material_light
 color button_material_dark
 color button_material_light
 color card_bg
+color card_bg_warm
 color cardview_dark_background
 color cardview_light_background
 color cardview_shadow_end_color
@@ -2082,7 +2083,9 @@ color mtrl_textinput_hovered_box_stroke_color
 color notification_action_color_filter
 color notification_icon_bg_color
 color orange
+color orange_bg_light
 color orange_dark
+color orange_header
 color orange_light
 color primary_dark_material_dark
 color primary_dark_material_light
@@ -2098,8 +2101,10 @@ color secondary_text_default_material_dark
 color secondary_text_default_material_light
 color secondary_text_disabled_material_dark
 color secondary_text_disabled_material_light
+color shadow_soft
 color success
 color success_light
+color success_material
 color switch_thumb_disabled_material_dark
 color switch_thumb_disabled_material_light
 color switch_thumb_material_dark
@@ -2108,7 +2113,9 @@ color switch_thumb_normal_material_dark
 color switch_thumb_normal_material_light
 color text_light
 color text_primary
+color text_primary_dark
 color text_secondary
+color text_secondary_medium
 color tooltip_background_dark
 color tooltip_background_light
 color transparent
@@ -3045,6 +3052,7 @@ drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_search_black_24
+drawable ic_wisee_logo
 drawable input_bg
 drawable m3_avd_hide_password
 drawable m3_avd_show_password
@@ -3652,6 +3660,7 @@ id tvSuccess
 id tvTotalSessions
 id tvTotalWords
 id tvUnknownMsg
+id tvUnknownTitle
 id tvWord
 id unchecked
 id uniform
@@ -5333,3 +5342,4 @@ styleable ViewPager2 android_orientation
 styleable ViewStubCompat android_id android_layout android_inflatedId
 styleable ViewTransition android_id SharedValue SharedValueId clearsTag duration ifTagNotSet ifTagSet motionInterpolator motionTarget onStateTransition pathMotionArc setsTag transitionDisable upDuration viewTransitionMode
 styleable include constraintSet
+xml file_paths

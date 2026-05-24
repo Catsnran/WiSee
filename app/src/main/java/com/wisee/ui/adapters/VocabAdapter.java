@@ -29,7 +29,7 @@ public class VocabAdapter extends RecyclerView.Adapter<VocabAdapter.VH> {
     @NonNull @Override
     public VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-            .inflate(R.layout.item_vocab, parent, false);
+                .inflate(R.layout.item_vocab, parent, false);
         return new VH(v);
     }
 
@@ -43,8 +43,8 @@ public class VocabAdapter extends RecyclerView.Adapter<VocabAdapter.VH> {
 
         // Warna berbeda untuk kata negatif
         int bgColor = frame.safe
-            ? holder.itemView.getContext().getColor(R.color.chip_bg)
-            : holder.itemView.getContext().getColor(R.color.danger_light);
+                ? holder.itemView.getContext().getColor(R.color.chip_bg)
+                : holder.itemView.getContext().getColor(R.color.danger_light);
         holder.itemView.setBackgroundColor(bgColor);
     }
 

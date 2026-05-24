@@ -39,18 +39,18 @@ public class HistoryActivity extends AppCompatActivity {
 
         adapter = new HistoryAdapter(new ArrayList<>(), (item, pos) -> {
             new AlertDialog.Builder(this)
-                .setTitle("Hapus Riwayat?")
-                .setMessage("Hapus kata \"" + item.word + "\" dari riwayat?")
-                .setPositiveButton("Hapus", (d, w) ->
-                    DatabaseService.deleteHistory(item.id, userId, ok -> runOnUiThread(() -> {
-                        if (ok) {
-                            adapter.remove(pos);
-                            if (adapter.getItemCount() == 0) showEmpty();
-                            loadStats();
-                        }
-                    })))
-                .setNegativeButton("Batal", null)
-                .show();
+                    .setTitle("Hapus Riwayat?")
+                    .setMessage("Hapus kata \"" + item.word + "\" dari riwayat?")
+                    .setPositiveButton("Hapus", (d, w) ->
+                            DatabaseService.deleteHistory(item.id, userId, ok -> runOnUiThread(() -> {
+                                if (ok) {
+                                    adapter.remove(pos);
+                                    if (adapter.getItemCount() == 0) showEmpty();
+                                    loadStats();
+                                }
+                            })))
+                    .setNegativeButton("Batal", null)
+                    .show();
         });
         rvHistory.setAdapter(adapter);
 
@@ -75,10 +75,10 @@ public class HistoryActivity extends AppCompatActivity {
 
     private void loadStats() {
         DatabaseService.getUniqueWordCount(userId, count ->
-            runOnUiThread(() -> tvTotalWords.setText(String.valueOf(count))));
+                runOnUiThread(() -> tvTotalWords.setText(String.valueOf(count))));
 
         DatabaseService.getHistory(userId, list -> runOnUiThread(() ->
-            tvTotalSessions.setText(list == null ? "0" : String.valueOf(list.size()))));
+                tvTotalSessions.setText(list == null ? "0" : String.valueOf(list.size()))));
     }
 
     private void showEmpty() {
@@ -88,15 +88,15 @@ public class HistoryActivity extends AppCompatActivity {
 
     private void confirmClearAll() {
         new AlertDialog.Builder(this)
-            .setTitle("🗑️ Hapus Semua Riwayat?")
-            .setMessage("Semua riwayat belajar akan dihapus permanen.")
-            .setPositiveButton("Hapus Semua", (d, w) ->
-                DatabaseService.clearHistory(userId, ok -> runOnUiThread(() -> {
-                    adapter.setData(new ArrayList<>());
-                    showEmpty();
-                    loadStats();
-                })))
-            .setNegativeButton("Batal", null)
-            .show();
+                .setTitle("🗑️ Hapus Semua Riwayat?")
+                .setMessage("Semua riwayat belajar akan dihapus permanen.")
+                .setPositiveButton("Hapus Semua", (d, w) ->
+                        DatabaseService.clearHistory(userId, ok -> runOnUiThread(() -> {
+                            adapter.setData(new ArrayList<>());
+                            showEmpty();
+                            loadStats();
+                        })))
+                .setNegativeButton("Batal", null)
+                .show();
     }
 }

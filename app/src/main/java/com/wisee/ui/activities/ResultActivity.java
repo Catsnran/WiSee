@@ -116,7 +116,7 @@ public class ResultActivity extends AppCompatActivity {
 
         // ── Layer 2: Pollinations API ─────────────────────────
         exec.execute(() -> {
-            String prompt = "children book illustration, cute cartoon, colorful, "
+            String prompt = "cartoon illustration, cute cartoon, colorful, "
                     + "simple, white background, safe for kids, " + frame.imagePrompt;
 
             byte[] imgBytes = null;
