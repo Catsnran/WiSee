@@ -526,34 +526,111 @@ public class KnowledgeFrameService {
           "Bibi! Bibi adalah saudara perempuan dari ayah atau ibu kita. Bibi sangat menyayangi keponakan.",
           "cute cartoon aunt with nephew niece, friendly warm, children style, white background",true);
 
+
+        // ══════════════════════════════════════════════════════════
+        //  TAMBAHAN KNOWLEDGE BASE
+        //  Olahraga + Angka + Cuaca
+        // ══════════════════════════════════════════════════════════
+
         // ══════════════════════════════════════════
-        //  13. FILTER KATA NEGATIF (8 kata)
+        //  14. OLAHRAGA (10 kata) — BARU
         // ══════════════════════════════════════════
-        f("BODOH","kata negatif","⛔",
-          "Ups! Itu adalah kata yang tidak baik ya teman teman. Setiap orang itu cerdas dengan caranya masing masing. Mari kita selalu saling menyemangati!",
-          "friendly red stop sign with heart, cartoon children style, positive message, white background",false);
-        f("JELEK","kata negatif","⛔",
-          "Semua orang itu cantik dan indah dengan caranya sendiri! Mari kita tidak menggunakan kata itu ya. Semua teman kita itu istimewa dan berharga!",
-          "friendly red stop sign with heart and flowers, cartoon children style, white background",false);
-        f("NAKAL","kata negatif","⭐",
-          "Yuk kita belajar menjadi anak yang baik dan sopan! Bersikap baik membuat semua orang senang dan bahagia. Kamu pasti bisa jadi anak baik!",
-          "cute motivational star character giving thumbs up, cheerful, children style, white background",false);
-        f("JAHAT","kata negatif","💝",
-          "Kata itu tidak baik ya. Mari selalu berbuat baik kepada semua orang di sekitar kita. Kebaikan membuat dunia jadi lebih indah dan menyenangkan!",
-          "cute cartoon heart with wings spreading kindness, rainbow, children style, white background",false);
-        f("MALAS","kata negatif","⭐",
-          "Ayo semangat! Setiap orang butuh istirahat, tapi dengan rajin belajar kita bisa menjadi orang sukses yang membanggakan ayah dan ibu. Semangat!",
-          "cute motivational superhero child flying with cape, cheerful energetic, children style, white background",false);
-        f("BENCI","kata negatif","💝",
-          "Rasa benci membuat hati kita tidak nyaman. Mari ganti dengan rasa cinta dan sayang kepada semua orang. Dunia lebih indah dengan kasih sayang!",
-          "cute cartoon heart replacing negative with positive, love wins, children style, white background",false);
-        f("KOTOR","kata negatif","🧹",
-          "Menjaga kebersihan itu penting! Selalu cuci tangan, mandi, dan jaga lingkungan tetap bersih. Bersih itu sehat dan menyenangkan!",
-          "cute cartoon broom and dustpan cleaning up, sparkles after cleaning, children style, white background",false);
-        f("BOHONG","kata negatif","⭐",
-          "Kejujuran adalah hal yang sangat penting! Selalu berkata jujur meskipun sulit. Orang jujur dipercaya dan disayangi semua orang.",
-          "cute cartoon child speaking truth with honesty symbol, children style, white background",false);
+        f("SEPAKBOLA","olahraga","⚽",
+                "Sepak bola! Sepak bola adalah olahraga paling populer di dunia. Tendang bola masuk ke gawang!",
+                "cute cartoon soccer players kicking ball into goal, colorful jerseys, children style, white background",true);
+        f("RENANG","olahraga","🏊",
+                "Renang! Renang adalah olahraga yang menyenangkan di dalam air. Renang menyehatkan seluruh tubuh!",
+                "cute cartoon child swimming in pool with goggles and swim cap, blue water, children style, white background",true);
+        f("BASKET","olahraga","🏀",
+                "Bola basket! Bola basket dimainkan dengan memasukkan bola ke dalam keranjang tinggi. Seru!",
+                "cute cartoon child shooting basketball into hoop, orange ball, children style, white background",true);
+        f("BADMINTON","olahraga","🏸",
+                "Badminton! Badminton dimainkan dengan raket dan kok. Olahraga favorit di Indonesia!",
+                "cute cartoon children playing badminton with rackets and shuttlecock, children style, white background",true);
+        f("LARI","olahraga","🏃",
+                "Berlari! Berlari adalah olahraga paling mudah dilakukan. Lari pagi membuat tubuh sehat dan segar!",
+                "cute cartoon child running fast in park, happy expression, wind effect, children style, white background",true);
+        f("SENAM","olahraga","🤸",
+                "Senam! Senam membuat tubuh lentur dan kuat. Senam bisa dilakukan sendirian atau bersama-sama.",
+                "cute cartoon child doing gymnastics with colorful exercise mat, children style, white background",true);
+        f("VOLI","olahraga","🏐",
+                "Voli! Bola voli dimainkan dengan memukul bola melewati net. Dimainkan dua tim bersama-sama!",
+                "cute cartoon volleyball players at net, white blue ball, beach volleyball, children style, white background",true);
+        f("TENIS","olahraga","🎾",
+                "Tenis! Tenis dimainkan di lapangan dengan raket dan bola berbulu. Smash! Seru sekali bermain tenis!",
+                "cute cartoon child holding tennis racket with green court background, children style, white background",true);
+        f("GOLF","olahraga","⛳",
+                "Golf! Golf dimainkan dengan memukul bola ke dalam lubang. Lapangan golf sangat hijau dan luas.",
+                "cute cartoon child playing golf on green course, golf club and ball, children style, white background",true);
+        f("TINJU","olahraga","🥊",
+                "Tinju! Tinju adalah olahraga bela diri yang butuh kekuatan dan teknik. Pakai sarung tangan merah!",
+                "cute cartoon child boxing with red gloves and punching bag, children style, white background",true);
+
+        // ══════════════════════════════════════════
+        //  15. ANGKA (10 kata) — BARU
+        // ══════════════════════════════════════════
+        f("SATU","angka","1️⃣",
+                "Satu! Satu adalah angka pertama. Satu jari, satu mata, satu hidung. Ayo hitung bersama! Satu!",
+                "cute cartoon number 1 with eyes and smile, colorful bold, children learning style, white background",true);
+        f("DUA","angka","2️⃣",
+                "Dua! Dua artinya sepasang. Kita punya dua tangan, dua kaki, dua telinga. Dua itu simetris!",
+                "cute cartoon number 2 with eyes and smile, colorful bold, children learning style, white background",true);
+        f("TIGA","angka","3️⃣",
+                "Tiga! Tiga adalah angka setelah dua. Tiga sisi segitiga. Tiga warna lampu lalu lintas!",
+                "cute cartoon number 3 with eyes and smile, colorful bold, children learning style, white background",true);
+        f("EMPAT","angka","4️⃣",
+                "Empat! Empat kaki kucing, empat roda mobil, empat sudut persegi. Hitung sampai empat!",
+                "cute cartoon number 4 with eyes and smile, colorful bold, children learning style, white background",true);
+        f("LIMA","angka","5️⃣",
+                "Lima! Lima jari di satu tangan. Lima hari sekolah dalam seminggu. Tos lima! High five!",
+                "cute cartoon number 5 with eyes and smile giving high five, colorful, children learning style, white background",true);
+        f("ENAM","angka","6️⃣",
+                "Enam! Lebah punya enam kaki. Serangga punya enam kaki. Enam sisi kubus. Hitung sampai enam!",
+                "cute cartoon number 6 with eyes and smile, colorful bold, children learning style, white background",true);
+        f("TUJUH","angka","7️⃣",
+                "Tujuh! Tujuh hari dalam seminggu. Tujuh warna pelangi. Tujuh adalah angka keberuntungan!",
+                "cute cartoon number 7 with rainbow behind it, children learning style, colorful, white background",true);
+        f("DELAPAN","angka","8️⃣",
+                "Delapan! Laba-laba punya delapan kaki. Gurita punya delapan tentakel. Delapan seperti tidur!",
+                "cute cartoon number 8 with spider web design, friendly, children learning style, white background",true);
+        f("SEMBILAN","angka","9️⃣",
+                "Sembilan! Sembilan adalah angka terbesar sebelum sepuluh. Kucing punya sembilan nyawa!",
+                "cute cartoon number 9 with eyes and smile, colorful bold, children learning style, white background",true);
+        f("SEPULUH","angka","🔟",
+                "Sepuluh! Sepuluh jari di dua tangan. Sepuluh angka dari nol sampai sembilan. Hore selesai!",
+                "cute cartoon number 10 with confetti celebration, both hands showing 10 fingers, children style, white background",true);
+
+        // ══════════════════════════════════════════
+        //  16. CUACA (8 kata) — BARU
+        // ══════════════════════════════════════════
+        f("CERAH","cuaca","☀️",
+                "Cerah! Cuaca cerah artinya matahari bersinar terang tanpa awan. Hari cerah cocok bermain di luar!",
+                "cute cartoon sunny clear sky with smiling sun and few white clouds, children style, white background",true);
+        f("MENDUNG","cuaca","☁️",
+                "Mendung! Cuaca mendung artinya langit penuh awan gelap. Biasanya mendung pertanda akan hujan.",
+                "cute cartoon dark gray clouds covering sky, child looking up worriedly, children style, white background",true);
+        f("HUJAN LEBAT","cuaca","⛈️",
+                "Hujan lebat! Hujan lebat turun dengan sangat deras disertai petir. Di dalam rumah lebih aman!",
+                "cute cartoon heavy rain with lightning and thunder, child safely inside watching, children style, white background",true);
+        f("ANGIN","cuaca","💨",
+                "Angin! Angin adalah udara yang bergerak. Angin sepoi-sepoi membuat sejuk. Angin bisa menerbangkan layang-layang!",
+                "cute cartoon wind blowing leaves and kite flying, friendly wind face, children style, white background",true);
+        f("SALJU","cuaca","❄️",
+                "Salju! Salju adalah air beku yang turun dari langit seperti kapas putih. Bisa dibuat bola salju!",
+                "cute cartoon snowflakes falling, child in winter clothes catching snowflakes, children style, white background",true);
+        f("PANAS","cuaca","🌡️",
+                "Panas! Cuaca panas membuat kita berkeringat. Saat panas, minum air yang banyak ya!",
+                "cute cartoon thermometer showing high temperature, sun shining intensely, children style, white background",true);
+        f("DINGIN","cuaca","🧊",
+                "Dingin! Cuaca dingin membuat kita menggigil. Pakai jaket tebal saat cuaca dingin ya!",
+                "cute cartoon child wrapped in warm scarf and coat shivering, snowflakes, children style, white background",true);
+        f("KABUT","cuaca","🌫️",
+                "Kabut! Kabut adalah uap air tebal di udara yang membuat pandangan tidak jelas. Biasanya pagi hari.",
+                "cute cartoon foggy morning with barely visible trees and houses, children style, white background",true);
+
+        
     }
+
 
     // ── Public API ────────────────────────────────────────────
 
