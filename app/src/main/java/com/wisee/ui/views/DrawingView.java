@@ -8,6 +8,9 @@ import android.view.*;
 /**
  * Custom View untuk menggambar tulisan tangan.
  * Menghasilkan Bitmap hitam-di-putih untuk KNN.
+ *
+ * FIX #4: requestDisallowInterceptTouchEvent(true) agar ScrollView
+ * tidak mencuri touch event saat user menggambar.
  */
 public class DrawingView extends View {
 
@@ -61,13 +64,17 @@ public class DrawingView extends View {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         float x = event.getX(), y = event.getY();
+
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
+                if (getParent() != null) {
+                    getParent().requestDisallowInterceptTouchEvent(true);
+                }
                 path.moveTo(x, y);
                 lastX = x; lastY = y;
                 break;
+
             case MotionEvent.ACTION_MOVE:
-                // Bezier curve untuk tulisan halus
                 path.quadTo(lastX, lastY, (x + lastX) / 2, (y + lastY) / 2);
                 lastX = x; lastY = y;
                 if (bitmapCanvas != null) {
@@ -77,7 +84,12 @@ public class DrawingView extends View {
                 }
                 invalidate();
                 break;
+
             case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_CANCEL:
+                if (getParent() != null) {
+                    getParent().requestDisallowInterceptTouchEvent(false);
+                }
                 path.lineTo(x, y);
                 if (bitmapCanvas != null) bitmapCanvas.drawPath(path, drawPaint);
                 path.reset();
