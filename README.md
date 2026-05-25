@@ -4,36 +4,39 @@ Aplikasi **Android** edukasi interaktif untuk anak-anak yang mengubah tulisan ta
 
 ---
 
-## 🚀 Cara Buka di Android Studio
+## 🚀 Cara Buka dan Build di Android Studio
 
 ### 1. Persyaratan
 - **Android Studio Hedgehog** (2023.1.1) atau lebih baru
 - **JDK 17** (sudah include di Android Studio)
 - **Android SDK 34**
-- Device/Emulator Android **min API 24** (Android 7.0+)
+- Device/Emulator Android (Android 11.0+)
 
-### 2. Buka Project
+### 2. Cara Build & Run
 ```
 1. Buka Android Studio
 2. File → Open → pilih folder WiSeeAndroid/
-3. Tunggu Gradle sync selesai (~2-5 menit, perlu internet pertama kali)
+3. Tunggu Gradle sync selesai (~2-5 menit, memerlukan internet saat pertama kali)
 4. Klik ▶ Run atau Shift+F10
 ```
+
+---
+
 ## 📦 Dataset KNN (Built-in, Tidak Perlu Upload)
 
 Dataset sudah **ter-bundle** di dalam APK:
 ```
-app/src/main/assets/dataset/az_dataset.csv.gz
+app/src/main/assets/dataset/az_emnist_combined.bin
 ```
-- **7.800 sampel** (300 per huruf × 26 huruf A-Z)
+- **62.400 sampel**
 - Diekstrak dari dataset A-Z Handwritten Kaggle
 - Format: `label(0-25), pixel1, ..., pixel784` (28×28 grayscale)
 - Ukuran terkompresi: **~1.8 MB**
-- Dimuat otomatis saat aplikasi pertama dibuka
+- Dimuat otomatis saat aplikasi pertama dibuka dengan progress bar loading screen yang interaktif.
 
 ---
 
-## 🏗️ Struktur Project
+## 🏗️ Struktur Project (Terupdate)
 
 ```
 WiSeeAndroid/
@@ -51,14 +54,14 @@ WiSeeAndroid/
 │   │   │   ├── DatabaseService.java       ← Facade DB operations
 │   │   │   ├── SessionService.java        ← Singleton sesi login
 │   │   │   ├── KnnService.java            ← KNN classifier
-│   │   │   └── KnowledgeFrameService.java ← Basis pengetahuan (130+ kata)
+│   │   │   └── KnowledgeFrameService.java ← Basis pengetahuan (180 kata)
 │   │   ├── ui/
 │   │   │   ├── activities/
 │   │   │   │   ├── SplashActivity.java
 │   │   │   │   ├── LoginActivity.java
 │   │   │   │   ├── RegisterActivity.java  ← Redirect ke Login setelah daftar
-│   │   │   │   ├── MainActivity.java      ← OCR + Kosakata utama
-│   │   │   │   ├── ResultActivity.java    ← Detail hasil + AI illustration
+│   │   │   │   ├── MainActivity.java      ← OCR + Kosakata utama + Dialog kamera
+│   │   │   │   ├── ResultActivity.java    ← Detail hasil + AI illustration + Safe handler
 │   │   │   │   ├── HistoryActivity.java   ← Riwayat belajar
 │   │   │   │   └── VocabActivity.java     ← Browser kosakata
 │   │   │   ├── adapters/
@@ -69,16 +72,18 @@ WiSeeAndroid/
 │   │   └── util/
 │   │       ├── HashUtil.java              ← SHA-256
 │   │       ├── ImageProcessor.java        ← Grayscale→Threshold→Segmentasi
+│   │       ├── NegativeWordFilter.java    ← Filter kata buruk + pesan ramah [TERUPDATE]
 │   │       └── TtsUtil.java              ← Android TextToSpeech (offline)
 │   │
 │   ├── assets/dataset/
-│   │   └── az_dataset.csv.gz              ← Dataset KNN built-in ✅
+│   │   └── az_emnist_combined.bin         ← Dataset KNN built-in
 │   │
 │   └── res/
-│       ├── layout/                        ← 7 layout XML
-│       ├── drawable/                      ← 11 shape/selector drawable
-│       ├── values/                        ← colors, strings, themes, dimens
-│       └── color/                         ← chip color selectors
+│       ├── layout/                        ← 9 layout XML (Tampilan terupdate & premium)
+│       ├── drawable/                      ← Shape & asset logo (ic_wisee_logo)
+│       ├── xml/
+│       │   └── file_paths.xml             ← Provider file untuk kamera [BARU]
+│       └── values/                        ← colors, strings, themes, dimens
 │
 ├── build.gradle                           ← Dependencies
 └── settings.gradle
@@ -88,111 +93,84 @@ WiSeeAndroid/
 
 ## 🤖 Cara Kerja Sistem
 
-### Alur Pengenalan Tulisan
-
+### Alur Pengenalan Tulisan & Gambar
 ```
-User menggambar di DrawingView
-        ↓
-Bitmap (hitam di latar putih)
-        ↓
-toGray() → Grayscale 2D array
-        ↓
-threshold() → Otsu binarisasi
-        ↓
-segmentChars() → Proyeksi kolom → [x,y,w,h] per karakter
-        ↓
-extract() → Crop + padding + resize 28×28
-        ↓
-KnnService.predict() → K=5, Euclidean distance
-        ↓
-Karakter → Kata (A-Z concatenated)
-        ↓
-KnowledgeFrameService.getFrame(word)
-        ↓
-Frame: {emoji, audioText, imagePrompt, category}
-        ↓
-TtsUtil.speak(audioText)  +  ResultActivity
+User menggambar di DrawingView / Ambil Foto (Kamera / Galeri)
+                        ↓
+                 Preprocessing
+      (Grayscale → Otsu Threshold → Segmentasi)
+                        ↓
+            KnnService.predict() (K=5)
+                        ↓
+            Pengecekan Kata Negatif
+          (NegativeWordFilter.isBlocked)
+          ↙                          ↘
+  [YA: Diblokir]              [TIDAK: Diizinkan]
+         ↓                           ↓
+Tampilkan Pesan Ramah       KnowledgeFrameService
+(Blokir Gambar & Audio)              ↓
+                       Ilustrasi AI (Pollinations FLUX)
+                                     +
+                       TtsUtil.speak (Suara Offline)
 ```
 
-### KNN (K-Nearest Neighbors)
-- **K = 5** tetangga terdekat, voting majority
-- **Metrik**: Euclidean distance pada ruang 784 dimensi
-- **Training data**: 7.800 sampel (300/huruf)
-- **Loaded from**: `assets/dataset/az_dataset.csv.gz` (background thread)
+### 1. K-Nearest Neighbors (KNN)
+- **K = 5** tetangga terdekat dengan Euclidean distance 784 dimensi.
+- Dimuat otomatis dari file bin di thread latar belakang demi menjaga performa aplikasi tetap mulus.
 
-### Frame-Based Knowledge System
-Setiap kata dipetakan ke `KnowledgeFrame`:
-```java
-new KnowledgeFrame(
-  "KUCING",      // word (key)
-  "hewan",       // category
-  "🐱",          // emoji
-  "Kucing! ...", // audioText (TTS)
-  "cute cat...", // imagePrompt (AI)
-  true           // safe (false = konten negatif)
-)
-```
+### 2. Sistem Filter Kata Negatif
+Aplikasi memisahkan sistem kata negatif dari basis data utama agar konten buruk tidak muncul di pencarian atau kategori belajar:
+- **Independent Filtering**: Semua kata negatif dipusatkan di `NegativeWordFilter.java`.
+- **Aman dari False Positive**: Menggunakan aturan minimal 3 karakter untuk mendeteksi kata negatif, sehingga input huruf tunggal (seperti "A") tidak akan terblokir secara keliru.
+- **Smart Matching**: Mencocokkan input yang mengandung unsur kata negatif secara aman tanpa memblokir kata baik yang mirip.
+- **Friendly Redirection**: Menampilkan dialog edukatif ramah yang memotivasi anak untuk menulis kata positif, serta mematikan fitur TTS dan AI generator untuk kata negatif.
 
-### Text-to-Speech
-- **Engine**: Android built-in `TextToSpeech`
-- **Bahasa**: `id_ID` (Bahasa Indonesia), fallback English
-- **Tidak perlu internet** ✅
-- Speech rate: 0.85x (pelan, ramah anak)
+### 3. Pilihan Input Kamera & Galeri
+Tombol kamera di halaman utama kini mendukung dual-action dialog:
+- **Ambil Foto Langsung**: Membuka kamera bawaan menggunakan `FileProvider` untuk keamanan penuh.
+- **Pilih dari Galeri**: Memilih gambar tulisan tangan langsung dari media penyimpanan lokal.
 
 ---
 
-## 📚 Knowledge Base — 130+ Kata, 13 Kategori
+## 📚 Knowledge Base — 180 Kata, 15 Kategori
 
-| Kategori | Jumlah | Contoh |
-|---|---|---|
-| 🐱 hewan | 26 | KUCING, ANJING, GAJAH, JERAPAH, LUMBA... |
-| 🍎 buah | 18 | APEL, MANGGA, DURIAN, RAMBUTAN, SALAK... |
-| 🥕 sayuran | 12 | WORTEL, BAYAM, KANGKUNG, BROKOLI... |
-| 📚 benda | 15 | BUKU, PENSIL, JAM, CERMIN, LAMPU... |
-| 🚗 kendaraan | 10 | MOBIL, HELIKOPTER, AMBULANS, TRAKTOR... |
-| ☀️ alam | 12 | MATAHARI, PELANGI, SAWAH, SUNGAI... |
-| 👁️ tubuh | 10 | MATA, GIGI, JARI, PERUT... |
-| 🔴 warna | 8 | MERAH, UNGU, ORANYE, PUTIH, HITAM... |
-| 🍚 makanan | 12 | NASI, SATE, TEMPE, TAHU, PERMEN, ES... |
-| 🏫 tempat | 10 | SEKOLAH, PANTAI, LAPANGAN, PERPUSTAKAAN... |
-| 👨‍🏫 profesi | 10 | GURU, PILOT, KOKI, NELAYAN, ASTRONOT... |
-| 👨 keluarga | 8 | AYAH, IBU, KAKEK, NENEK, PAMAN, BIBI... |
-| ⛔ kata negatif | 8 | Filter + pesan positif |
+Basis pengetahuan dirancang ramah anak, terbebas dari kata-kata negatif, dan memiliki cakupan kosakata yang luas:
 
----
+| Kategori | Jumlah | Contoh Kata |
+| :--- | :---: | :--- |
+| 🐱 **hewan** | 26 | KUCING, ANJING, GAJAH, JERAPAH, LUMBA... |
+| 🍎 **buah** | 18 | APEL, MANGGA, JERUK, SEMANGKA, STROBERI... |
+| 🥕 **sayuran** | 12 | WORTEL, BAYAM, KANGKUNG, BROKOLI... |
+| 📚 **benda** | 15 | BUKU, PENSIL, JAM, CERMIN, LAMPU... |
+| 🚗 **kendaraan** | 10 | MOBIL, HELIKOPTER, AMBULANS, TRAKTOR... |
+| ☀️ **alam** | 12 | MATAHARI, PELANGI, SAWAH, SUNGAI... |
+| 👁️ **tubuh** | 10 | MATA, GIGI, JARI, PERUT... |
+| 🔴 **warna** | 8 | MERAH, UNGU, ORANYE, PUTIH, HITAM... |
+| 🍚 **makanan** | 12 | NASI, SATE, TEMPE, TAHU, PERMEN, ES... |
+| 🏫 **tempat** | 10 | SEKOLAH, PANTAI, LAPANGAN, PERPUSTAKAAN... |
+| 👨‍🏫 **profesi** | 10 | GURU, PILOT, KOKI, NELAYAN, ASTRONOT... |
+| 👨 **keluarga** | 8 | AYAH, IBU, KAKEK, NENEK, PAMAN, BIBI... |
+| 🏃 **olahraga** [BARU] | 10 | LARI, SENAM, VOLI, TENIS, GOLF, TINJU... |
+| 1️⃣ **angka** [BARU] | 10 | SATU, DUA, TIGA, EMPAT, LIMA... |
+| 🌤️ **cuaca** [BARU] | 8 | CERAH, MENDUNG, ANGIN, SALJU, PANAS... |
 
-## 🎨 Color Palette
-
-| Nama | Hex | Penggunaan |
-|---|---|---|
-| Orange | `#EF7722` | Utama, header, aksen |
-| Yellow | `#FAA533` | Tombol audio, aksen kedua |
-| Light | `#EBEBEB` | Background sekunder |
-| Blue | `#0BA6DF` | Tombol sekunder, kategori |
-| BG | `#FFF8F0` | Background halaman |
+*Catatan: Seluruh konten kata negatif telah dimigrasi total ke engine filter internal.*
 
 ---
 
-## 📱 Fitur Lengkap
-
-- ✅ **Login & Register** → Register langsung redirect ke Login
-- ✅ **Session persisten** → Tidak perlu login ulang
-- ✅ **OCR tulisan tangan** → DrawingView custom + KNN
-- ✅ **Upload foto** → Dari galeri
-- ✅ **TTS offline** → Android TextToSpeech bahasa Indonesia
-- ✅ **Ilustrasi AI** → HuggingFace FLUX.1-schnell (perlu internet + token)
-- ✅ **Riwayat belajar** → Room SQLite per user
-- ✅ **Browser kosakata** → 130+ kata, filter kategori + search
-- ✅ **Filter konten negatif** → Kata buruk → pesan positif
-- ✅ **Dataset built-in** → Tidak perlu upload CSV
+## 📱 Fitur Lengkap WiSee
+- **Login & Register**: Sistem autentikasi aman berbasis Room DB dengan auto-redirect setelah pendaftaran sukses.
+- **Session Persistent**: Login satu kali, tetap masuk di peluncuran berikutnya.
+- **Dual Input OCR**: Canvas menggambar interaktif (DrawingView) dan pengunggahan gambar tulisan tangan (Galeri & Kamera).
+- **Offline TTS**: Konversi teks-ke-suara edukatif bahasa Indonesia secara offline dengan pelafalan yang ramah anak.
+- **AI-Powered Illustration**: Menghasilkan gambar ilustrasi berkualitas tinggi dari coretan anak menggunakan API HuggingFace FLUX.1-schnell.
+- **Save History**: Menyimpan riwayat belajar kata dan gambar AI di database lokal Room SQLite secara dinamis.
+- **Filter Konten Negatif**: Blokir kata kasar/buruk secara otomatis dengan petunjuk alternatif yang positif.
+- **Dataset Built-in**: Tidak memerlukan unggah file manual, siap digunakan seketika.
 
 ---
 
-## ⚠️ Catatan
-
-1. **Gradle sync** butuh internet pertama kali untuk download dependencies
-2. **TTS bahasa Indonesia** butuh language pack di-install di device
-   - Settings → General Management → Language → Text-to-speech → Install Indonesian
-3. **Akurasi KNN** ~70-85% tergantung kejelasan tulisan (7.800 sampel)
-   - Tips: tulis besar, tebal, satu kata, huruf kapital terpisah
-4. **Ilustrasi AI** butuh internet(opsional)
+## ⚠️ Catatan Penting
+1. **Sync Gradle**: Membutuhkan internet pada sinkronisasi pertama kali di Android Studio.
+2. **Text-To-Speech**: Pastikan paket bahasa Indonesia terpasang di perangkat (`Settings → Language → Text-to-speech → Install Indonesian`).
+3. **Koneksi Internet**: Diperlukan untuk mengakses server Pollinations untuk membuat ilustrasi AI.
